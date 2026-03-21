@@ -58,8 +58,9 @@
     }
 
     .brand {
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.2px;
+      font-size: 1.3rem;
     }
 
     .nav-links {
@@ -98,10 +99,18 @@
     }
 
     h1 {
-      font-size: clamp(2.5rem, 5vw, 4.8rem);
-      line-height: 1.02;
-      margin: 0 0 1rem;
-      letter-spacing: -0.04em;
+      font-size: clamp(3.4rem, 7vw, 6rem);
+      line-height: 0.95;
+      margin: 0 0 0.85rem;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-name {
+      font-size: clamp(1.2rem, 2vw, 1.45rem);
+      font-weight: 700;
+      color: var(--accent-2);
+      letter-spacing: 0.02em;
+      margin: 0 0 0.55rem;
     }
 
     .hero p {
@@ -182,6 +191,33 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 100%;
+      overflow: hidden;
+    }
+
+    .profile-photo-wrap {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    .profile-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+      color: var(--muted);
     }
 
     .hero-card h3,
@@ -258,11 +294,46 @@
     }
 
     .skills-grid div {
-      padding: 0.85rem 0.9rem;
+      padding: 0.95rem 1rem;
       border-radius: 16px;
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
       color: var(--muted);
+      font-weight: 600;
+    }
+
+    .skills-highlight {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .skills-highlight .skill-pill {
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(122,162,255,0.12), rgba(255,255,255,0.03));
+      border: 1px solid rgba(122,162,255,0.22);
+      color: var(--text);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .tool-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .tool-stack span {
+      padding: 0.8rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-align: center;
+      font-weight: 600;
     }
 
     .timeline {
@@ -372,8 +443,10 @@
         align-items: flex-start;
       }
 
-      h1 { font-size: 2.5rem; }
-      .skills-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.9rem; }
+      .skills-grid,
+      .skills-highlight,
+      .tool-stack { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -396,6 +469,7 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Entry-Level Data Analyst · Data Scientist</div>
+          <div class="hero-name">Ahan Nair</div>
           <h1>Turning messy data into decisions people can actually use.</h1>
           <p>
             I’m Ahan Nair, a data science and economics graduate focused on analytics, automation, dashboards, and applied machine learning. I enjoy building practical projects that connect technical work to real business questions.
@@ -408,21 +482,30 @@
           <div class="quick-stats">
             <div class="stat">
               <strong>Python · SQL · R</strong>
-              <span>Core analytics toolkit</span>
+              <span>Core analytics and modeling toolkit</span>
+            </div>
+            <div class="stat">
+              <strong>Tableau · Excel · GCP</strong>
+              <span>Visualization, reporting, and cloud-based workflow support</span>
             </div>
             <div class="stat">
               <strong>Dashboards + ETL</strong>
-              <span>Business-focused reporting and workflow automation</span>
-            </div>
-            <div class="stat">
-              <strong>UW–Madison 2025</strong>
-              <span>Data Science and Economics, CS minor</span>
+              <span>Business-focused reporting and process automation</span>
             </div>
           </div>
         </div>
 
         <aside class="card hero-card">
           <div>
+            <div class="profile-photo-wrap">
+              <img class="profile-photo" src="portfolio.JPG" alt="Portrait of Ahan Nair" />
+            </div>
+            <div class="profile-caption">
+              <span>Analytics, reporting, and practical machine learning</span>
+              <span>Open to entry-level roles</span>
+            </div>
+          </div>
+          <div style="margin-top: 1rem;">
             <h3>What I bring</h3>
             <p>
               A strong foundation in analysis, data storytelling, and practical project execution, with experience translating findings for leadership and building solutions that reduce manual work.
@@ -458,18 +541,34 @@
             <p>
               My best work happens when I can take a vague business problem, clean and analyze the data behind it, and turn the results into something clear, actionable, and easy for others to use.
             </p>
+            <div class="skills-highlight">
+              <div class="skill-pill">Exploratory Data Analysis</div>
+              <div class="skill-pill">Dashboard Development</div>
+              <div class="skill-pill">Applied Machine Learning</div>
+              <div class="skill-pill">Data Storytelling</div>
+            </div>
             <div class="skills-grid">
               <div>Statistical Modeling</div>
-              <div>Exploratory Data Analysis</div>
-              <div>Applied Machine Learning</div>
               <div>Data Visualization</div>
-              <div>Dashboard Development</div>
+              <div>Workflow Automation</div>
               <div>Analytical Problem Solving</div>
             </div>
           </div>
           <div class="card">
-            <h3>Tools</h3>
-            <p>Python, SQL, R, Tableau, RStudio, Stata, and Google Cloud Platform.</p>
+            <h3>Tools & Platforms</h3>
+            <p>
+              A technical stack centered on analytics, reporting, and practical modeling, presented in a way that keeps the section easy to scan.
+            </p>
+            <div class="tool-stack">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>R</span>
+              <span>Tableau</span>
+              <span>Excel</span>
+              <span>Google Cloud</span>
+              <span>RStudio</span>
+              <span>Stata</span>
+            </div>
             <h3 style="margin-top:1.25rem;">Open to</h3>
             <p>Data Analyst, Business Analyst, Product Analytics, and Entry-Level Data Scientist roles.</p>
           </div>
