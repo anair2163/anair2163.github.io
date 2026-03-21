@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahan Nair | Data Analyst & Data Scientist</title>
+  <meta name="description" content="Portfolio website for Ahan Nair, an early-career data analyst and data science graduate." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #172142;
+      --text: #eef2ff;
+      --muted: #b7c1e0;
+      --accent: #7aa2ff;
+      --accent-2: #8ef0d2;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 20px 50px rgba(0,0,0,0.28);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(122,162,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(142,240,210,0.12), transparent 22%),
+        linear-gradient(180deg, #0b1020 0%, #0d1327 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,16,32,0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+
+    .hero {
+      padding: 5.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.95fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      color: var(--accent-2);
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      margin: 0 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 720px;
+      margin: 0 0 1.4rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin: 1.5rem 0 1.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #5c82ff);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(92,130,255,0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .stat, .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      padding: 1rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .hero-card h3,
+    .section-title {
+      margin: 0 0 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .hero-card p,
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.5rem 0.72rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background: rgba(122,162,255,0.1);
+      border: 1px solid rgba(122,162,255,0.22);
+      color: #d8e3ff;
+    }
+
+    section {
+      padding: 1.2rem 0 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+
+    .about, .experience, .education {
+      grid-column: span 12;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+    }
+
+    .card {
+      padding: 1.35rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .skills-grid div {
+      padding: 0.85rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1.2rem;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+    }
+
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-top strong {
+      font-size: 1.05rem;
+    }
+
+    .timeline-top span,
+    .timeline-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      padding: 1.35rem;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .project-card .meta {
+      color: var(--accent-2);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .small-link {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .small-link:hover,
+    .small-link:focus-visible {
+      color: var(--accent-2);
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+    }
+
+    .footer-card {
+      padding: 1.25rem 1.35rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .about-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 { font-size: 2.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Ahan Nair</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Entry-Level Data Analyst · Data Scientist</div>
+          <h1>Turning messy data into decisions people can actually use.</h1>
+          <p>
+            I’m Ahan Nair, a data science and economics graduate focused on analytics, automation, dashboards, and applied machine learning. I enjoy building practical projects that connect technical work to real business questions.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="https://github.com/anair2163" target="_blank" rel="noreferrer">GitHub Profile</a>
+            <a class="btn btn-secondary" href="https://linkedin.com/in/ahannair" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="quick-stats">
+            <div class="stat">
+              <strong>Python · SQL · R</strong>
+              <span>Core analytics toolkit</span>
+            </div>
+            <div class="stat">
+              <strong>Dashboards + ETL</strong>
+              <span>Business-focused reporting and workflow automation</span>
+            </div>
+            <div class="stat">
+              <strong>UW–Madison 2025</strong>
+              <span>Data Science and Economics, CS minor</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card hero-card">
+          <div>
+            <h3>What I bring</h3>
+            <p>
+              A strong foundation in analysis, data storytelling, and practical project execution, with experience translating findings for leadership and building solutions that reduce manual work.
+            </p>
+          </div>
+          <div>
+            <div class="tag-list">
+              <span class="tag">Exploratory Data Analysis</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Dashboard Development</span>
+              <span class="tag">Workflow Automation</span>
+              <span class="tag">Data Storytelling</span>
+              <span class="tag">Business Analytics</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">About</h2>
+            <p>
+              I’m an early-career analyst who likes finding the story inside data. My background blends data science, economics, and computer science, which helps me approach problems from both a technical and business perspective.
+            </p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="card">
+            <h3>Strengths</h3>
+            <p>
+              My best work happens when I can take a vague business problem, clean and analyze the data behind it, and turn the results into something clear, actionable, and easy for others to use.
+            </p>
+            <div class="skills-grid">
+              <div>Statistical Modeling</div>
+              <div>Exploratory Data Analysis</div>
+              <div>Applied Machine Learning</div>
+              <div>Data Visualization</div>
+              <div>Dashboard Development</div>
+              <div>Analytical Problem Solving</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Tools</h3>
+            <p>Python, SQL, R, Tableau, RStudio, Stata, and Google Cloud Platform.</p>
+            <h3 style="margin-top:1.25rem;">Open to</h3>
+            <p>Data Analyst, Business Analyst, Product Analytics, and Entry-Level Data Scientist roles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Experience</h2>
+            <p>
+              A mix of business analytics, operational reporting, and technical support experience that reflects both analytical depth and strong communication.
+            </p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <strong>Data Analyst · Exec Socks</strong>
+              <span>Aug 2025 – Present</span>
+            </div>
+            <div class="timeline-sub">Raleigh, NC</div>
+            <p>
+              Support analytics across Exec Socks and F45 by analyzing customer, revenue, and membership data to identify growth, retention, and spending trends. Build dashboards, prepare ETL-style datasets, and design automation workflows that reduce manual reporting and help leadership make clearer decisions.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-top">
+              <strong>Helpdesk Support Specialist · UW–Madison DoIT</strong>
+              <span>Jul 2024 – Apr 2025</span>
+            </div>
+            <div class="timeline-sub">Madison, WI</div>
+            <p>
+              Resolved 1,000+ support interactions across in-person, phone, chat, and ticketing channels while documenting issue patterns and improving troubleshooting workflows. The role strengthened my ability to communicate technical concepts clearly and solve problems in fast-moving environments.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Projects</h2>
+            <p>
+              These are the strongest portfolio pieces to feature first for entry-level analytics and data science roles. Each card links directly to the repository.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="meta">Healthcare Analytics</div>
+            <h3>Healthcare Cost Driver Analysis</h3>
+            <p>
+              Notebook-based analysis using synthetic Medicare claims data to identify major cost drivers and simulate real-world healthcare analytics workflows.
+            </p>
+            <div class="project-actions">
+              <a class="small-link" href="https://github.com/anair2163/HealthcareCostDriverAnalysis" target="_blank" rel="noreferrer">View Repo ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="meta">Predictive Modeling</div>
+            <h3>Length of Stay Prediction Pipeline</h3>
+            <p>
+              A machine learning pipeline focused on predicting patient length of stay, showing feature preparation, modeling, and evaluation for a practical healthcare use case.
+            </p>
+            <div class="project-actions">
+              <a class="small-link" href="https://github.com/anair2163/LengthOfStayPredictionPipeline" target="_blank" rel="noreferrer">View Repo ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="meta">Clinical Analytics</div>
+            <h3>Diabetes Readmission Analysis</h3>
+            <p>
+              Analyzes drivers of hospital readmission for diabetes-related cases, combining exploratory analysis with predictive thinking around patient outcomes.
+            </p>
+            <div class="project-actions">
+              <a class="small-link" href="https://github.com/anair2163/DiabetesReadmissionAnalysis" target="_blank" rel="noreferrer">View Repo ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="meta">Revenue Analytics</div>
+            <h3>Online Retail Revenue Leakage</h3>
+            <p>
+              Examines transaction and retail behavior data to identify where revenue may be leaking, with a focus on surfacing practical business insights.
+            </p>
+            <div class="project-actions">
+              <a class="small-link" href="https://github.com/anair2163/OnlineRetailRevenueLeakage" target="_blank" rel="noreferrer">View Repo ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="meta">Data App / Visualization</div>
+            <h3>Pneumonia Explorer</h3>
+            <p>
+              An interactive explorer project that presents a more application-style way to inspect data, which adds variety beyond notebooks and shows you can build usable interfaces around analysis.
+            </p>
+            <div class="project-actions">
+              <a class="small-link" href="https://github.com/anair2163/pneumonia-explorer" target="_blank" rel="noreferrer">View Repo ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Education</h2>
+            <p>
+              Academic foundation with a practical focus on analytics, data science, and communication.
+            </p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="card">
+            <h3>University of Wisconsin–Madison</h3>
+            <p>B.S. in Data Science and Economics, Minor in Computer Science · 2025</p>
+            <p>Dean’s List</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="card footer-card">
+        <div>
+          <strong>Let’s connect.</strong>
+          <div style="margin-top:0.35rem; color: var(--muted);">Best for recruiters, hiring managers, and collaborators interested in analytics and data-focused roles.</div>
+        </div>
+        <div class="cta-row" style="margin:0;">
+          <a class="btn btn-secondary" href="mailto:ahannair21@gmail.com">Email Me</a>
+          <a class="btn btn-secondary" href="https://github.com/anair2163" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-secondary" href="https://linkedin.com/in/ahannair" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
